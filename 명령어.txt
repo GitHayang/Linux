@@ -30,3 +30,73 @@ free -m: 메모리 사용량
 df -h : 용량 사용
 mkdir : 폴더 만들기 -p /test /test 경로사으이 파일을 다 만들어준다.
 rmdir : 폴더 지우기 - 'rm -rf' 트리 구조의 안까지 다 지우겠다
+
+
+#echo : 별뜻은 없다 
+echo aaa치면 aaa쳐준다. - 아무런 뭐가없다. 
+echo aaa>a.txt 하면 a.txt파일에 저장된다. 
+
+
+#압축 
+압축하기 : tar -cvf ./text.tar ./text  
+tar -cvzf ./text.tar.gz ./text  
+압축풀기 : tar -xvf test.tar하면 오버라이트한다 
+tar -zxvf aaa.tar.gz -C 
+(-C에 붙여서 써야한다.) 
+그래서 새로운 폴더를 만들어야한다. 
+
+
+# 쉘 스크립트 Backgound 종료 
+jobs쳐서 번호 확인 후 kill %해당번호 
+혹은 ps -ef|grep sleep하면 나오는 번호를 찾아서 
+kill -번호 
+
+
+#mv : 이동 
+mv : 파일 이동 명령
+mv 구파일명 신파일명 : 파일명 변경 
+- 무조건 폴더 위치를 같이 붙여라 ex) mv ./test ./ testRename 
+mv 파일명 폴더명 : 폴더로 파일 이동 
+mv 구폴더명 신폴더명 : 폴더명 변경 
+touch 파일명.확장자 : 파일명.확장자로 생성 
+
+
+#cp : 복사 
+cp 구파일명 신파일명  : 파일 복사 
+cp 파일명 폴더명 : 파일을 폴더에 복사 
+cp -R 구폴더명 신폴더명 : 폴더를 통째로 복사
+디렉토리 없이 카피하면 최상위 폴더를 없애고 새폴더를 만들어서 데이터를 넣는다 
+- 카피할 때는 미리 디렉토리(폴더)를 만들어 놓고 해라 
+
+
+#rm : 삭제 
+rm 파일명 : 파일을 지운다. 
+rm -i 파일명 : 지울지 물어본다 Y누르면 지운다 
+rm -rf : 해당 디렉토리와 내용물을 다 지운다. 
+rmdir : 폴더 지우기 - 'rm -rf' 트리 구조의 안까지 다 지우겠다  
+
+
+#리다이렉션  
+>   : ll >result.txt -result.txt 파일을 뒤의 파일명으로 넣겠다. 
+cat result.txt로 내용을 확인할 수 있다. 
+파일명이 같을 경우 덮어쓰기가 된다. 
+>> : ll >>result.txt -기존 내용에 추가된다. 
+
+
+#파일 다루기 
+grep -r -n 찾는 문자열 경로 : 
+grep -r 찾는 문자열 ./ : 어디 있는지 찾아준다. 
+grep -rn 찾는 문자열 ./ : 어디 있는지 찾아준다. 줄수도 찾아준다.  
+grep | ~~ : ~~들어있는 부분만 보겠다 
+
+
+#crontab
+서버 내 특정 프로세스를 '주기적'으로 실행시키고자 할 떄 사용하는 데몬 
+ex) 윈도우의 작업 스케줄러 
+crontab -e : 에디터 모드 
+crontab -l : 리스트 모드
+crontab –r : 삭제 - 잘 안쓴다 : 보통 주석처리한다 
+
+
+#git clone 
+git clone + url : url의 파일을 긁어온다. 
