@@ -100,3 +100,21 @@ docker system prune -a : 불륨빼고 싹 다 지워준다.(돌고있는 것도 
 
 docker volume prune : 컨테이너에서 사용하지 않는 모든 불륨을 삭제 
 
+
+#docker compose 
+여러 컨테이너를 모아서 관리하기 위한 도구  
+  
+docker-compose.yml 파일에 컨테이너 구성 정보를 정의  
+image: 사용할 docker image  
+volumes: container에 mount 할 호스트 볼륨  
+entrypoint: container load 이후 실행할 명령어   
+
+links: container dependency  
+
+ports: port mapping    
+
+environment: container 내부 환경변수  
+
+
+
+
