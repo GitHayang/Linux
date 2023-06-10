@@ -1,0 +1,27 @@
+/// 데이터 파일 로딩
+    // 접속정보 설정 (1)
+    var staticUrl = "jdbc:mysql://192.168.137.100:3306/kopo"
+
+    var staticUser = "kopo"
+    var staticPw = "kopo"
+    var selloutDb = "kopo_product_volume_out"
+
+    // 관계형 데이터베이스 Mysql 연결 (2)
+    val dataFromMySql= spark.read.format("jdbc").
+      option("url",staticUrl).
+      option("dbtable",selloutDb).
+      option("user",staticUser).
+      option("password",staticPw).load
+
+    // 데이터 확인 (3)
+    println(dataFromMySql.show(5))
+
+    var outTable = "kopo_product_volume_out2.csv"
+    var hdfs_master = "hdfs://192.168.137.100:9000/kopo/"
+
+    dataFromMySql.
+      coalesce(1). // 파일개수
+      write.format("csv"). // 저장포맷
+      mode("overwrite"). // 저장모드 append/overwrite
+      option("header", "true"). // 헤더 유/무
+      save(hdfs_master + outTable) // 저장파일명
